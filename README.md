@@ -44,12 +44,6 @@ Create a new Python package or repository with a single command! ⭐️Star it i
 ```bash
 pip install biscuitcutter
 ```
-
-##### Install from GitHub source
-```bash
-pip install git+https://github.com/erdogant/biscuitcutter
-```
-
 ---
 
 ### Usage
