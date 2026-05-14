@@ -10,7 +10,7 @@
 [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
 <div>
-<a href="https://erdogant.github.io/biscuitcutter/"><img src="https://github.com/erdogant/biscuitcutter/blob/master/docs/figs/logo.png" width="350" align="left" /></a>
+<a href="https://erdogant.github.io/biscuitcutter/"><img src="https://github.com/erdogant/biscuitcutter/blob/master/docs/figs/logo.png" width="250" align="left" /></a>
 **biscuitcutter** is a new repository scaffolder for Python projects.
 
 Create a new Python package or repository with a single command! ⭐️Star it if you like it⭐️
