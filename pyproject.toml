@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biscuitcutter"
+dynamic = ["version"]
+authors = [{ name = "Erdogan Taskesen", email = "erdogant@gmail.com" }]
+description = "biscuitcutter – scaffold a new Python repo from a template in seconds."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ["Python", "biscuitcutter", "templates", "scaffolding", "cookiecutter"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Operating System :: Unix",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://erdogant.github.io/biscuitcutter"
+Download = "https://github.com/erdogant/biscuitcutter/archive/{version}.tar.gz"
+
+# ── CLI entry-points ───────────────────────────────────────────────────────
+# After `pip install biscuitcutter` the user can type any of these commands
+# in a terminal to launch the interactive scaffolder.
+[project.scripts]
+biscuitcutter  = "biscuitcutter.biscuitcutter:main"
+bakebiscuit    = "biscuitcutter.biscuitcutter:main"
+bakebiscuits   = "biscuitcutter.biscuitcutter:main"
+
+[tool.setuptools]
+packages = ["biscuitcutter"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+biscuitcutter = ["template.zip"]
+
+[tool.setuptools.dynamic]
+version = { attr = "biscuitcutter.__version__" }
