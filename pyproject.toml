@@ -33,7 +33,9 @@ Download = "https://github.com/erdogant/biscuitcutter/archive/{version}.tar.gz"
 [project.scripts]
 biscuitcutter  = "biscuitcutter.biscuitcutter:main"
 bakebiscuit    = "biscuitcutter.biscuitcutter:main"
-bakebiscuits   = "biscuitcutter.biscuitcutter:main"
+makebiscuit    = "biscuitcutter.biscuitcutter:main"
+makerepo       = "biscuitcutter.biscuitcutter:main"
+newrepo        = "biscuitcutter.biscuitcutter:main"
 
 [tool.setuptools]
 packages = ["biscuitcutter"]
