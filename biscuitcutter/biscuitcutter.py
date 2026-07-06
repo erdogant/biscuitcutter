@@ -13,6 +13,8 @@ import sys
 import zipfile
 import shutil
 import logging
+import configparser
+import subprocess
 
 logger = logging.getLogger(__name__)
 
@@ -87,11 +89,9 @@ def main():
     print(f"✔  Placeholders replaced.")
     print(f"\n🎉  Done!  Your new repo is ready at:\n    {repo_dir}\n")
 
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
-
 def _prompt(label, required=True, default=None):
     suffix = f" [{default}]" if default else ""
     while True:
@@ -102,23 +102,6 @@ def _prompt(label, required=True, default=None):
             print(f"    ✗  '{label}' is required.")
             continue
         return value or ""
-
-
-def _create_stub_zip(dest_path, placeholder):
-    """Create a minimal stub zip when the real template is unavailable."""
-    import io, zipfile as zf
-
-    buf = io.BytesIO()
-    with zf.ZipFile(buf, "w") as z:
-        z.writestr(f"{placeholder}/__init__.py",   f"# {placeholder}\n__version__ = '0.1.0'\n")
-        z.writestr(f"{placeholder}/{placeholder}.py",
-                   f'"""{placeholder}."""\n\nclass {placeholder}:\n    pass\n')
-        z.writestr("README.md",    f"# {placeholder}\n\nA new Python library.\n")
-        z.writestr("pyproject.toml",
-                   f'[project]\nname = "{placeholder}"\n'
-                   f'authors = [{{name = "Erdogan Taskesen", email = "erdogant@gmail.com"}}]\n')
-    with open(dest_path, "wb") as fh:
-        fh.write(buf.getvalue())
 
 
 def _extract_zip(zip_path, dest_dir):
@@ -188,6 +171,19 @@ def _rename_paths(root, old_name, new_name):
                 os.rename(src, dst)
 
 
+def get_pypi_credentials():
+    config = configparser.ConfigParser()
+    config.read('.pypirc')
+
+    if 'pypi' in config:
+        pypi_section = config['pypi']
+        if 'username' in pypi_section and 'password' in pypi_section:
+            username = pypi_section['username']
+            password = pypi_section['password']
+            return username, password
+        else:
+            logger.warning('No [.pypirc] file found. Type in the username and password manually.')
+    return None, None
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":

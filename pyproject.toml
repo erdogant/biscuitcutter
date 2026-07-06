@@ -36,6 +36,7 @@ bakebiscuit    = "biscuitcutter.biscuitcutter:main"
 makebiscuit    = "biscuitcutter.biscuitcutter:main"
 makerepo       = "biscuitcutter.biscuitcutter:main"
 newrepo        = "biscuitcutter.biscuitcutter:main"
+maketemplate   = "biscuitcutter.biscuitcutter:main"
 
 [tool.setuptools]
 packages = ["biscuitcutter"]
