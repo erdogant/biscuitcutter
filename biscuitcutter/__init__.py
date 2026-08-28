@@ -5,7 +5,7 @@ from biscuitcutter.biscuitcutter import main
 
 __author__ = 'Erdogan Taskesen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '1.1.2'
+__version__ = '1.1.21'
 
 # Setup package-level logger
 _logger = logging.getLogger('biscuitcutter')
